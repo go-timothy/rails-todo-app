@@ -1,8 +1,6 @@
 class TasksController < ApplicationController
     def index
-        user_id = 1
-        @tasks = Task.where(user_id: user_id)
-        return @tasks
+        @tasks = Task.all
     end
 
     def show
@@ -11,7 +9,6 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(task_params)
-        @task.user_id = 1
 
         if @task.save
             render :json => { :status => "success", :data => @task }
@@ -22,7 +19,6 @@ class TasksController < ApplicationController
 
     def update
         @task = Task.find(params[:id])
-        @task.user_id = 1
 
         if @task.update(task_params)
             render :json => { :status => "success", :data => @task }

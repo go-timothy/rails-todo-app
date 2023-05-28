@@ -3,9 +3,7 @@
 one:
   title: MyText
   detail: MyText
-  user: one
 
 two:
   title: MyText
   detail: MyText
-  user: two

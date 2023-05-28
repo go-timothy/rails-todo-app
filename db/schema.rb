@@ -32,19 +32,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_28_023338) do
   create_table "tasks", force: :cascade do |t|
     t.text "title"
     t.text "detail"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_tasks_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.text "username"
-    t.text "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "comments", "articles"
-  add_foreign_key "tasks", "users"
 end
