@@ -10,7 +10,6 @@
             "request": "launch",
             "script": "bin/rails server",
             "args": [],
-            "askParameters": true
         },
         {
             "type": "rdbg",
