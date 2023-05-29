@@ -3,6 +3,10 @@ class TasksController < ApplicationController
         @tasks = Task.all
     end
 
+    def new
+        @task = Task.new
+    end
+
     def show
         @task = Task.find(params[:id])
       end
@@ -11,9 +15,9 @@ class TasksController < ApplicationController
         @task = Task.new(task_params)
 
         if @task.save
-            render :json => { :status => "success", :data => @task }
+            redirect_to action: "index"
         else
-            render :json => { :status => "error", :data => @task.errors.full_messages }
+            render :new, status: :unprocessable_entity
         end
     end
 
@@ -21,9 +25,9 @@ class TasksController < ApplicationController
         @task = Task.find(params[:id])
 
         if @task.update(task_params)
-            render :json => { :status => "success", :data => @task }
+            redirect_to action: "index"
         else
-            render :json => { :status => "error", :data => @task.errors.full_messages }
+            render :new, status: :unprocessable_entity
         end
     end
 
@@ -31,9 +35,9 @@ class TasksController < ApplicationController
         @task = Task.find(params[:id])
 
         if @task.destroy()
-            render :json => { :status => "success" }
+            redirect_to action: "index"
         else
-            render :json => { :status => "error", :data => @task.errors.full_messages }
+            render :new, status: :unprocessable_entity
         end
     end
 
